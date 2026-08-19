@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minha Lista de Tarefas</title>
 <style>
-  /* ===== VARIÁVEIS DE COR (fica fácil trocar o tema depois) ===== */
+  /* ===== VARIÁVEIS DE COR ===== */
   :root {
     --bg: #101314;
     --panel: #181c1e;
@@ -258,14 +258,10 @@
 <script>
   // ===================================================================
   // ESTADO DA APLICAÇÃO
-  // Guardamos as tarefas em um array de objetos. Cada tarefa tem:
-  // - id: identificador único (usamos a data/hora atual)
-  // - text: o texto da tarefa
-  // - completed: se está marcada como concluída ou não
   // ===================================================================
   let tasks = [];
 
-  // Pegando os elementos do HTML que vamos manipular
+  // Pegando os elementos do HTML para manipular
   const form = document.getElementById('add-form');
   const input = document.getElementById('task-input');
   const list = document.getElementById('task-list');
@@ -321,8 +317,7 @@
       const li = document.createElement('li');
       li.className = 'task-item' + (task.completed ? ' completed' : '');
 
-      // Cria o checkbox (usamos um <button> estilizado em vez de <input type="checkbox">
-      // para ter controle total do visual)
+      // Cria o checkbox
       const checkbox = document.createElement('button');
       checkbox.className = 'task-checkbox' + (task.completed ? ' checked' : '');
       checkbox.setAttribute('aria-label', 'Marcar tarefa como concluída');
@@ -355,7 +350,7 @@
   }
 
   // ===================================================================
-  // EVENTO: quando o formulário é enviado (botão "Adicionar" ou Enter)
+  // EVENTO: quando o formulário é enviado
   // ===================================================================
   form.addEventListener('submit', (event) => {
     event.preventDefault(); // impede a página de recarregar
